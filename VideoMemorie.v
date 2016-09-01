@@ -20,12 +20,33 @@
 //////////////////////////////////////////////////////////////////////////////////
 module VideoMemorie(
     input [11:0] Bitscolores,
-    input Cordanadas,
+    input Cordenadax,
+	 input Cordenaday,
+	 input Enable,
     input Pxcount,
+	 input VerSin,
     output Vr,
     output Vb,
     output Vg
     );
 
+reg [9:0] contadorx;
+reg [9:0] contadory;
+
+always @(Enable)
+	begin
+	
+
+	end	 
+
+always @(Pxcount)
+	begin
+	contadorx<= contadorx + 1;
+	if(contadorx==800)
+		begin
+		contadorx <= 0;
+		contadory <= contadory + 1;
+		end	
+	end 
 
 endmodule
