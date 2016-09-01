@@ -12,6 +12,7 @@ module Temporizer(
     );
 
 reg [1:0] CurrentState = 2'b00;
+
 /*
 00:Contando
 01:Detenido
@@ -36,6 +37,7 @@ always @(actionButton)
 	begin
 	if (CurrentState == 0)
 		begin
+		currentDigit = 0;
 		CurrentState = 1;
 		end
 	else if (CurrentState == 1)
@@ -47,10 +49,58 @@ always @(actionButton)
 		CurrentState = 1;
 		end
 	end
-
-always @(upBotton, downButton, leftButton, rightButton)
+	
+reg [2:0] currentDigit = 3'b00; 
+//Controla el setup de los botones cuando 
+always @(leftButton)
+	begin
+	if(CurrentState == 1)
 		begin
+			currentDigit = currentDigit - 1;
 		end
+	end
+		
+//Controla el setup de los botones cuando 
+always @(rightButton)
+	begin
+	if(CurrentState == 1)
+		begin
+			currentDigit = currentDigit + 1;
+		end
+	end
+		
+//Controla el setup de los botones cuando 
+always @(upButton)
+	begin
+	if(CurrentState == 1)
+		begin
+			case(currentDigit)
+				3'b000  : _time = _time;
+				3'b001  : _time = _time + 1;
+				3'b010  : _time = _time + 10;
+				3'b010  : _time = _time + 60;
+				3'b010  : _time = _time + 600;
+				default : _time = _time;
+			endcase;
+		end
+	end
+		
+//Controla el setup de los botones cuando 
+always @(downButton)
+	begin
+	if(CurrentState == 1)
+		begin
+			case(currentDigit)
+				3'b000  : _time = _time;
+				3'b001  : _time = _time - 1;
+				3'b010  : _time = _time - 10;
+				3'b010  : _time = _time - 60;
+				3'b010  : _time = _time - 600;
+				default : _time = _time;
+			endcase;
+		end
+	end
+	
 
 
 endmodule
