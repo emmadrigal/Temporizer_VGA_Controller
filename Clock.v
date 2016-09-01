@@ -1,23 +1,5 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    08:31:27 08/21/2016 
-// Design Name: 
-// Module Name:    Clock 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
-//////////////////////////////////////////////////////////////////////////////////
+
 module Clock(
     input wire clk,    //Connected to the pin clock of the FPGA
     output wire sec,   //Used for control of the temporizer, frecuency is actually 0.96Hz
