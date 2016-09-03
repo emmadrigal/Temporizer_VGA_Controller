@@ -6,8 +6,10 @@ module Debouncer(
     output reg Out
     );
 	 
-reg [1:0] States = 2'b00;
-	 
+initial begin
+	reg [1:0] States = 2'b00;
+end
+
 always @(posedge clk)
 begin
 	if (Button == 1'b1)
