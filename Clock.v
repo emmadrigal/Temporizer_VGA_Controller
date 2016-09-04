@@ -4,7 +4,8 @@
 module Clock(
     input wire clk,     //Connected to the pin clock of the FPGA
     output wire sec,    //Used for control of the temporizer, frecuency is actually 0.96Hz
-    output wire VSync,  //Vertical Synchronization of the screen should be 60Hz, its actually 61.53Hz
+    output wire VSync,  //Vertical Synchronization of the screen should be 60Hz, its actually 61.53Hz	
+															//This signal will also be used for the debouncer
     output wire HSync,   //Horizontal Synchronization of the screen should be 31.5kHz, its actually 31 505 Hz
 	 output wire PxCount //Pixel Count, used to know the current pixel being showed in the screen.
     );
