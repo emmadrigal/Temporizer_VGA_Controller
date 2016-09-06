@@ -15,29 +15,29 @@
 //
 // Revision: 
 // Revision 0.01 - File Created
-// Additional Comments:
+// Additional Comments
 //
 //////////////////////////////////////////////////////////////////////////////////
 module VideoMemorie(
-    input [11:0] Bitscolores,
-    input Cordenadax,
-	 input Cordenaday,
-	 input Enable,
-    input Pxcount,
-	 input VerSin,
-    output Vr,
-    output Vb,
-    output Vg
+	input [11:0] Coloresrgb,
+   input Pxcount,
+	input VerSin,
+	input posicionx,
+	input posiciony,
+   output Vr,
+   output Vb,
+   output Vg
     );
 
-reg [9:0] contadorx;
-reg [9:0] contadory;
+reg [9:0] contadorx=10'd0;
+reg [9:0] contadory=10'd0;
+reg [11:0] matriz [0:525][0:800];
 
-always @(Enable)
+always@(posicionx or posiciony)
 	begin
-	
+	matriz[posiciony][posicionx]=Coloresrgb;
+	end 
 
-	end	 
 
 always @(Pxcount)
 	begin
